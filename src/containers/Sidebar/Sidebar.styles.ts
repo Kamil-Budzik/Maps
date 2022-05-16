@@ -5,6 +5,15 @@ export const Wrapper = styled.div`
   padding: 0 2em;
   min-height: 100vh;
 
+  .container {
+    max-width: 400px;
+    margin: 0 auto;
+  }
+
+  section {
+    margin-bottom: 7em;
+  }
+
   .inputWrapper:first-child {
     margin-bottom: 2em;
   }
@@ -20,4 +29,10 @@ export const Subtitle = styled.h2`
   font-weight: 600;
   font-size: 2rem;
   margin-bottom: 1em;
+`;
+
+export const List = styled.ul`
+  li {
+    margin: 0.5em 0;
+  }
 `;
