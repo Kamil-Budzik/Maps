@@ -1,10 +1,14 @@
 import React from 'react';
 
+import { Wrapper } from './Map.styles';
+import Sidebar from 'containers/Sidebar';
+
 const Map = () => {
   return (
-    <div>
-      <h1>MAP route</h1>
-    </div>
+    <Wrapper>
+      <Sidebar />
+      <p>Map display</p>
+    </Wrapper>
   );
 };
 
