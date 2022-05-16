@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const Wrapper = styled.div`
   background: white;
-  padding: 0 2em;
+  padding: 0 2em 3em;
   min-height: 100vh;
 
   .container {
@@ -16,6 +16,10 @@ export const Wrapper = styled.div`
 
   .inputWrapper:first-child {
     margin-bottom: 2em;
+  }
+
+  @media (min-width: 800px) {
+    width: 350px;
   }
 `;
 
