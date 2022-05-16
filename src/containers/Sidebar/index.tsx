@@ -1,11 +1,12 @@
 import React from 'react';
 
 import { Wrapper } from './Sidebar.styles';
+import Title from '../../components/Title/Title';
 
 const Sidebar = () => {
   return (
     <Wrapper>
-      <h1>hello</h1>
+      <Title />
     </Wrapper>
   );
 };
