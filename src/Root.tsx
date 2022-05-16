@@ -1,10 +1,13 @@
 import React from 'react';
 
+import GlobalStyle from 'styles/globalStyle';
+
 const Root = () => {
   return (
-    <div>
+    <>
+      <GlobalStyle />
       <h1>Hello</h1>
-    </div>
+    </>
   );
 };
 
