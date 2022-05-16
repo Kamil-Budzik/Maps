@@ -2,25 +2,38 @@ import React from 'react';
 
 import Title from 'components/Title';
 import Input from 'components/Input';
+import PdfButton from 'components/Button/PdfButton';
 
-import { Label, Subtitle, Wrapper } from './Sidebar.styles';
+import { Label, List, Subtitle, Wrapper } from './Sidebar.styles';
 
 const Sidebar = () => {
   return (
     <Wrapper>
-      <Title />
-      <div>
-        <Subtitle>Koszty</Subtitle>
-        <div>
-          <div className="inputWrapper">
-            <Label htmlFor="fuelUsage">Spalanie paliwa na 100km</Label>
-            <Input id="fuelUsage" />
+      <div className="container">
+        <Title />
+        <section>
+          <Subtitle>Koszty</Subtitle>
+          <div>
+            <div className="inputWrapper">
+              <Label htmlFor="fuelUsage">Spalanie paliwa na 100km</Label>
+              <Input id="fuelUsage" type="number" />
+            </div>
+            <div className="inputWrapper">
+              <Label htmlFor="fuelPrice">Cena za 1 litr paliwa</Label>
+              <Input id="fuelPrice" type="number" />
+            </div>
           </div>
-          <div className="inputWrapper">
-            <Label htmlFor="fuelPrice">Cena za 1 litr paliwa</Label>
-            <Input id="fuelPrice" />
-          </div>
-        </div>
+        </section>
+        <section>
+          <Subtitle>Dane przejazdu</Subtitle>
+          <List>
+            <li>Ilość km: 2250</li>
+            <li>Ilość potrzebnych dni: 3</li>
+            <li>Koszt paliwa: 450zł</li>
+            <li>Całkowity koszt: 3450zł</li>
+          </List>
+        </section>
+        <PdfButton>Dowload PDF</PdfButton>
       </div>
     </Wrapper>
   );
