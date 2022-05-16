@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { MapContainer } from 'react-leaflet';
 
 export const Wrapper = styled.section`
   width: 100%;
@@ -14,7 +15,11 @@ export const Wrapper = styled.section`
   }
 
   .leaflet-bar {
-    display: none !important;
+    display: none;
   }
 `;
 
+export const StyledMapContainer = styled(MapContainer)`
+  width: 100%;
+  height: 100vh;
+`;

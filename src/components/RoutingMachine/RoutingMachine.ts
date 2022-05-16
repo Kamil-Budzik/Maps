@@ -7,10 +7,7 @@ const createRoutineMachineLayer = () => {
   return L.Routing.control({
     // @ts-ignore
     router: L.Routing.graphHopper(process.env.REACT_APP_GRAPHHOPPERTOKEN),
-    waypoints: [
-      L.latLng(33.52001088075479, 36.26829385757446),
-      L.latLng(33.50546582848033, 36.29547681726967),
-    ],
+    waypoints: [L.latLng(52.229675, 21.01223), L.latLng(48.856613, 2.352222)],
     show: false,
     addWaypoints: false,
     routeWhileDragging: false,
