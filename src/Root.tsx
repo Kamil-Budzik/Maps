@@ -5,9 +5,9 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import GlobalStyle from 'styles/globalStyle';
 import theme from 'styles/theme';
 
-import Homepage from 'pages/Homepage/Homepage';
-import History from 'pages/History/History';
-import Map from 'pages/Map/Map';
+import Homepage from 'pages/Homepage';
+import History from 'pages/History';
+import Map from 'pages/Map';
 
 const Root = () => {
   return (
