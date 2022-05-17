@@ -1,15 +1,18 @@
 import React from 'react';
-
-import Title from 'components/Title';
-import StartingLocationDropdown from 'components/DropdownCombobox/StartingLocationDropdown';
-
-import { ContentWrapper, FormWrapper, Wrapper } from './Homepage.styles';
 import { useSelector } from 'react-redux';
 import { RootState } from 'store';
 
+import Title from 'components/Title';
+import StartingLocationDropdown from 'components/DropdownCombobox/StartingLocationDropdown';
+import DestinationDropdown from 'components/DropdownCombobox/DestinationDropdown';
+
+import { ContentWrapper, FormWrapper, Wrapper } from './Homepage.styles';
+import Button from 'components/Button';
+import { Link } from 'react-router-dom';
+
 const Homepage = () => {
   const location = useSelector((state: RootState) => state.location);
-  console.log(location);
+
   return (
     <Wrapper>
       <ContentWrapper>
@@ -17,7 +20,10 @@ const Homepage = () => {
         <FormWrapper>
           {/*<DebouncedInput placeholder="Początkowa lokalizacja" />*/}
           <StartingLocationDropdown />
-          {/*<DestinationDropdown />*/}
+          <DestinationDropdown />
+          <Link to="/map">
+            <Button>Wyznacz drogę</Button>
+          </Link>
         </FormWrapper>
       </ContentWrapper>
     </Wrapper>

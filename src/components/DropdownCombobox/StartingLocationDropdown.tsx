@@ -2,7 +2,7 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import {
-  setNewCities,
+  setStartingCities,
   setStartingCity,
   setStartingCityId,
 } from 'features/location/locationSlice';
@@ -13,21 +13,24 @@ import DebouncedInput from 'components/Input/debouncedInput';
 import { Item, List } from './DropdownCombobox.styles';
 
 const StartingLocationDropdown = () => {
-  const { cities } = useSelector((state: RootState) => state.location);
+  const { startingCities: cities } = useSelector(
+    (state: RootState) => state.location
+  );
   const dispatch = useDispatch();
 
   // set Starting city id, value and clear list
   const handleClick = (id: string, title: string) => {
     dispatch(setStartingCityId(id));
     dispatch(setStartingCity(title));
-    dispatch(setNewCities([]));
+    dispatch(setStartingCities([]));
   };
 
   return (
-    <>
+    <div>
       <DebouncedInput
         placeholder="Początkowa lokalizacja"
         len={cities.length}
+        type="starting-location"
       />
       {cities.length > 0 && (
         <List>
@@ -41,7 +44,7 @@ const StartingLocationDropdown = () => {
           ))}
         </List>
       )}
-    </>
+    </div>
   );
 };
 

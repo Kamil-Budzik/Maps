@@ -1,41 +1,36 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-export interface City {
-  address: {
-    city: string;
-    countryName: string;
-    county: string;
-    label: string;
-    postalCode: string;
-    state: string;
-  };
-  id: string;
-  localityType: string;
-  position: {
-    lat: number;
-    lng: number;
-  };
-  title: string;
-}
+import { City } from './CityInterface';
 
 export interface LocationState {
-  cities: City[];
+  //starting city
+  startingCities: City[];
   startingCityId: string;
   startingCity: string;
+  //destination
+  destinationCities: City[];
+  destinationCity: string;
+  destinationCityId: string;
 }
 
 const initialState: LocationState = {
-  cities: [],
+  //starting city
+  startingCities: [],
   startingCity: '',
   startingCityId: '',
+  //destination
+  destinationCities: [],
+  destinationCity: '',
+  destinationCityId: '',
 };
 
 export const locationSlice = createSlice({
   name: 'location',
   initialState,
   reducers: {
-    setNewCities: (state, action) => {
-      state.cities = action.payload;
+    //starting city
+    setStartingCities: (state, action) => {
+      state.startingCities = action.payload;
     },
     setStartingCity: (state, action) => {
       state.startingCity = action.payload;
@@ -43,10 +38,26 @@ export const locationSlice = createSlice({
     setStartingCityId: (state, action) => {
       state.startingCityId = action.payload;
     },
+    //destination
+    setDestinationCities: (state, action) => {
+      state.destinationCities = action.payload;
+    },
+    setDestinationCity: (state, action) => {
+      state.destinationCity = action.payload;
+    },
+    setDestinationCityId: (state, action) => {
+      state.destinationCityId = action.payload;
+    },
   },
 });
 
-export const { setNewCities, setStartingCity, setStartingCityId } =
-  locationSlice.actions;
+export const {
+  setStartingCities,
+  setStartingCity,
+  setStartingCityId,
+  setDestinationCity,
+  setDestinationCityId,
+  setDestinationCities,
+} = locationSlice.actions;
 
 export default locationSlice.reducer;
