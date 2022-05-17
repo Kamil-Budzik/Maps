@@ -1,10 +1,12 @@
-import RoutingMachine from 'components/RoutingMachine/RoutingMachine';
 import React from 'react';
 import { TileLayer } from 'react-leaflet';
+
+import RoutingMachine from 'components/RoutingMachine';
 
 import { StyledMapContainer, Wrapper } from './MapDisplay.styles';
 
 const MapDisplay = () => {
+
   return (
     <Wrapper>
       <StyledMapContainer
