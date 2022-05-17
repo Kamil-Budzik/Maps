@@ -5,23 +5,23 @@ import { City } from './CityInterface';
 export interface LocationState {
   //starting city
   startingCities: City[];
-  startingCityId: string;
+  startingCityLoc: [number, number];
   startingCity: string;
   //destination
   destinationCities: City[];
   destinationCity: string;
-  destinationCityId: string;
+  destinationCityLoc: [number, number];
 }
 
 const initialState: LocationState = {
   //starting city
   startingCities: [],
   startingCity: '',
-  startingCityId: '',
+  startingCityLoc: [0, 0],
   //destination
   destinationCities: [],
   destinationCity: '',
-  destinationCityId: '',
+  destinationCityLoc: [0, 0],
 };
 
 export const locationSlice = createSlice({
@@ -35,8 +35,8 @@ export const locationSlice = createSlice({
     setStartingCity: (state, action) => {
       state.startingCity = action.payload;
     },
-    setStartingCityId: (state, action) => {
-      state.startingCityId = action.payload;
+    setStartingCityLoc: (state, action) => {
+      state.startingCityLoc = action.payload;
     },
     //destination
     setDestinationCities: (state, action) => {
@@ -45,8 +45,8 @@ export const locationSlice = createSlice({
     setDestinationCity: (state, action) => {
       state.destinationCity = action.payload;
     },
-    setDestinationCityId: (state, action) => {
-      state.destinationCityId = action.payload;
+    setDestinationCityLoc: (state, action) => {
+      state.destinationCityLoc = action.payload;
     },
   },
 });
@@ -54,10 +54,10 @@ export const locationSlice = createSlice({
 export const {
   setStartingCities,
   setStartingCity,
-  setStartingCityId,
+  setStartingCityLoc,
   setDestinationCity,
-  setDestinationCityId,
   setDestinationCities,
+  setDestinationCityLoc,
 } = locationSlice.actions;
 
 export default locationSlice.reducer;
