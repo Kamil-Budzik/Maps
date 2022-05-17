@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-interface City {
+export interface City {
   address: {
     city: string;
     countryName: string;
@@ -18,12 +18,16 @@ interface City {
   title: string;
 }
 
-export interface CounterState {
+export interface LocationState {
   cities: City[];
+  startingCityId: string;
+  startingCity: string;
 }
 
-const initialState: CounterState = {
+const initialState: LocationState = {
   cities: [],
+  startingCity: '',
+  startingCityId: '',
 };
 
 export const locationSlice = createSlice({
@@ -33,9 +37,16 @@ export const locationSlice = createSlice({
     setNewCities: (state, action) => {
       state.cities = action.payload;
     },
+    setStartingCity: (state, action) => {
+      state.startingCity = action.payload;
+    },
+    setStartingCityId: (state, action) => {
+      state.startingCityId = action.payload;
+    },
   },
 });
 
-export const { setNewCities } = locationSlice.actions;
+export const { setNewCities, setStartingCity, setStartingCityId } =
+  locationSlice.actions;
 
 export default locationSlice.reducer;
