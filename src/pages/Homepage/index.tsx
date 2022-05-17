@@ -1,10 +1,20 @@
 import React from 'react';
 
+import Title from 'components/Title';
+import Input from 'components/Input';
+
+import { ContentWrapper, FormWrapper, Wrapper } from './Homepage.styles';
+
 const Homepage = () => {
   return (
-    <div>
-      <h1>Homepage route</h1>
-    </div>
+    <Wrapper>
+      <ContentWrapper>
+        <Title />
+        <FormWrapper>
+          <Input isBig placeholder="Początkowa lokacja" />
+        </FormWrapper>
+      </ContentWrapper>
+    </Wrapper>
   );
 };
 
