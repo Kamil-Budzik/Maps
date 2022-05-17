@@ -13,7 +13,16 @@ export const ContentWrapper = styled.main`
   padding: 1em 4em 6em;
   background: white;
   max-width: 750px;
+  height: 600px;
   text-align: center;
-`;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
++`;
 
-export const FormWrapper = styled.form``;
+export const FormWrapper = styled.form`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 300px;
+`;
