@@ -1,7 +1,7 @@
 import React from 'react';
 
 import Title from 'components/Title';
-import Input from 'components/Input';
+import DebouncedInput from 'components/Input/debouncedInput';
 
 import { ContentWrapper, FormWrapper, Wrapper } from './Homepage.styles';
 
@@ -11,7 +11,7 @@ const Homepage = () => {
       <ContentWrapper>
         <Title />
         <FormWrapper>
-          <Input isBig placeholder="Początkowa lokacja" />
+          <DebouncedInput />
         </FormWrapper>
       </ContentWrapper>
     </Wrapper>
