@@ -1,11 +1,18 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import axios from 'axios';
 import debounce from 'lodash.debounce';
+import { useDispatch } from 'react-redux';
 
+import { setNewCities } from 'features/location/locationSlice';
 import Input from './index';
 
-const DebouncedInput = () => {
+interface Props {
+  placeholder: string;
+}
+
+const DebouncedInput = ({ placeholder }: Props) => {
   const [query, setQuery] = useState('');
+  const dispatch = useDispatch();
 
   const changeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
     setQuery(event.target.value);
@@ -22,17 +29,13 @@ const DebouncedInput = () => {
         const { data } = await axios.get(
           `https://geocode.search.hereapi.com/v1/geocode?q=${query}&apiKey=${process.env.REACT_APP_API_KEY}`
         );
-        console.log(data.items);
+        dispatch(setNewCities(data.items));
       })();
     }
-  }, [query]);
+  }, [query, dispatch]);
 
   return (
-    <Input
-      isBig
-      placeholder="Początkowa lokacja"
-      onChange={debouncedChangeHandler}
-    />
+    <Input isBig placeholder={placeholder} onChange={debouncedChangeHandler} />
   );
 };
 
