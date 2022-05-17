@@ -15,6 +15,10 @@ export const Wrapper = styled.section`
   }
 
   .leaflet-bar {
+    //display: none;
+  }
+
+  .leaflet-routing-alt table {
     display: none;
   }
 `;

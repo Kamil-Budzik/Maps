@@ -19,7 +19,7 @@ export const Wrapper = styled.div`
   }
 
   @media (min-width: 800px) {
-    width: 350px;
+    width: 400px;
   }
 `;
 
