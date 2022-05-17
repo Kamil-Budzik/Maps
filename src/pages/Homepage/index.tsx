@@ -1,7 +1,7 @@
 import React from 'react';
 
 import Title from 'components/Title';
-import DebouncedInput from 'components/Input/debouncedInput';
+import StartingLocationDropdown from 'components/DropdownCombobox/StartingLocationDropdown';
 
 import { ContentWrapper, FormWrapper, Wrapper } from './Homepage.styles';
 import { useSelector } from 'react-redux';
@@ -15,7 +15,9 @@ const Homepage = () => {
       <ContentWrapper>
         <Title />
         <FormWrapper>
-          <DebouncedInput placeholder="Początkowa lokalizacja" />
+          {/*<DebouncedInput placeholder="Początkowa lokalizacja" />*/}
+          <StartingLocationDropdown />
+          {/*<DestinationDropdown />*/}
         </FormWrapper>
       </ContentWrapper>
     </Wrapper>
