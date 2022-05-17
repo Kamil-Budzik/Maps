@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import {
   setDestinationCities,
   setDestinationCity,
-  setDestinationCityId,
+  setDestinationCityLoc,
 } from 'features/location/locationSlice';
 import { RootState } from 'store';
 
@@ -19,8 +19,8 @@ const DropdownCombobox = () => {
   const dispatch = useDispatch();
 
   // set Destination city id, value and clear list
-  const handleClick = (id: string, title: string) => {
-    dispatch(setDestinationCityId(id));
+  const handleClick = (loc: [number, number], title: string) => {
+    dispatch(setDestinationCityLoc(loc));
     dispatch(setDestinationCity(title));
     dispatch(setDestinationCities([]));
   };
@@ -37,7 +37,9 @@ const DropdownCombobox = () => {
           {destinationCities.map((city) => (
             <Item
               key={city.id}
-              onClick={() => handleClick(city.id, city.title)}
+              onClick={() =>
+                handleClick([city.position.lat, city.position.lng], city.title)
+              }
             >
               {city.title}
             </Item>

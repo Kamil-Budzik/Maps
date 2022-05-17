@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import {
   setStartingCities,
   setStartingCity,
-  setStartingCityId,
+  setStartingCityLoc,
 } from 'features/location/locationSlice';
 import { RootState } from 'store';
 
@@ -19,8 +19,8 @@ const StartingLocationDropdown = () => {
   const dispatch = useDispatch();
 
   // set Starting city id, value and clear list
-  const handleClick = (id: string, title: string) => {
-    dispatch(setStartingCityId(id));
+  const handleClick = (loc: [number, number], title: string) => {
+    dispatch(setStartingCityLoc(loc));
     dispatch(setStartingCity(title));
     dispatch(setStartingCities([]));
   };
@@ -37,7 +37,9 @@ const StartingLocationDropdown = () => {
           {cities.map((city) => (
             <Item
               key={city.id}
-              onClick={() => handleClick(city.id, city.title)}
+              onClick={() =>
+                handleClick([city.position.lat, city.position.lng], city.title)
+              }
             >
               {city.title}
             </Item>
