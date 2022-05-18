@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 export const Wrapper = styled.div`
   background: ${({ theme }) => theme.colors.primary};
@@ -20,9 +20,22 @@ export const ContentWrapper = styled.main`
   justify-content: space-evenly;
 +`;
 
-export const FormWrapper = styled.form`
+interface IFormWrapper {
+  stage: 'start' | 'destination' | 'completed';
+}
+
+export const FormWrapper = styled.form<IFormWrapper>`
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: ${({ stage }) => stage === 'completed' && 'space-between'};
   height: 300px;
+
+  ${({ stage }) =>
+    stage &&
+    stage === 'destination' &&
+    css`
+      div:nth-child(2) {
+        margin-top: 2em;
+      }
+    `}
 `;

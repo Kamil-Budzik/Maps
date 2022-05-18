@@ -11,6 +11,8 @@ export interface LocationState {
   destinationCities: City[];
   destinationCity: string;
   destinationCityLoc: [number, number];
+  //app-stage
+  stage: 'start' | 'destination' | 'completed';
 }
 
 const initialState: LocationState = {
@@ -22,6 +24,8 @@ const initialState: LocationState = {
   destinationCities: [],
   destinationCity: '',
   destinationCityLoc: [0, 0],
+  //app-stage
+  stage: 'start',
 };
 
 export const locationSlice = createSlice({
@@ -48,6 +52,10 @@ export const locationSlice = createSlice({
     setDestinationCityLoc: (state, action) => {
       state.destinationCityLoc = action.payload;
     },
+    //app=stage
+    setAppStage: (state, action) => {
+      state.stage = action.payload;
+    },
   },
 });
 
@@ -58,6 +66,7 @@ export const {
   setDestinationCity,
   setDestinationCities,
   setDestinationCityLoc,
+  setAppStage,
 } = locationSlice.actions;
 
 export default locationSlice.reducer;

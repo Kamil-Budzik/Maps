@@ -7,18 +7,23 @@ import DestinationDropdown from 'components/DropdownCombobox/DestinationDropdown
 import Button from 'components/Button';
 
 import { ContentWrapper, FormWrapper, Wrapper } from './Homepage.styles';
+import { useSelector } from 'react-redux';
+import { RootState } from 'store';
 
 const Homepage = () => {
+  const { stage } = useSelector((state: RootState) => state.location);
   return (
     <Wrapper>
       <ContentWrapper>
         <Title />
-        <FormWrapper>
+        <FormWrapper stage={stage}>
           <StartingLocationDropdown />
-          <DestinationDropdown />
-          <Link to="/map">
-            <Button>Wyznacz drogę</Button>
-          </Link>
+          {stage !== 'start' && <DestinationDropdown />}
+          {stage === 'completed' && (
+            <Link to="/map">
+              <Button>Wyznacz drogę</Button>
+            </Link>
+          )}
         </FormWrapper>
       </ContentWrapper>
     </Wrapper>

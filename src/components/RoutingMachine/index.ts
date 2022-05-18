@@ -23,7 +23,7 @@ export default function Routing({ startingLoc, destinationLoc }: Props) {
       ],
       routeWhileDragging: false,
     }).addTo(map);
-
+    console.log(routingControl.getPlan());
     return () => map.removeControl(routingControl);
   }, [map, destinationLoc, startingLoc]);
 
