@@ -2,7 +2,7 @@ import React from 'react';
 
 import Title from 'components/Title';
 import Input from 'components/Input';
-import PdfButton from 'components/Button/PdfButton';
+import Button from 'components/Button';
 
 import { Label, List, Subtitle, Wrapper } from './Sidebar.styles';
 
@@ -33,7 +33,7 @@ const Sidebar = () => {
             <li>Całkowity koszt: 3450zł</li>
           </List>
         </section>
-        <PdfButton>Dowload PDF</PdfButton>
+        <Button isPdf>Dowload PDF</Button>
       </div>
     </Wrapper>
   );

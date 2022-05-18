@@ -2,10 +2,8 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import {
+  handleDestinationCity,
   setAppStage,
-  setDestinationCities,
-  setDestinationCity,
-  setDestinationCityLoc,
 } from 'features/location/locationSlice';
 import { RootState } from 'store';
 
@@ -14,29 +12,27 @@ import DebouncedInput from 'components/Input/debouncedInput';
 import { Item, List } from './DropdownCombobox.styles';
 
 const DropdownCombobox = () => {
-  const { destinationCities } = useSelector(
-    (state: RootState) => state.location
-  );
+  const { destinationCity } = useSelector((state: RootState) => state.location);
   const dispatch = useDispatch();
+
+  const cities = destinationCity.cities;
 
   // set Destination city id, value and clear list
   const handleClick = (loc: [number, number], title: string) => {
-    dispatch(setDestinationCityLoc(loc));
-    dispatch(setDestinationCity(title));
-    dispatch(setDestinationCities([]));
     dispatch(setAppStage('completed'));
+    dispatch(handleDestinationCity({ title, loc, cities: [] }));
   };
 
   return (
     <div>
       <DebouncedInput
         placeholder="Cel podróży"
-        len={destinationCities.length}
+        len={cities.length}
         type={'destination'}
       />
-      {destinationCities.length > 0 && (
+      {cities.length > 0 && (
         <List>
-          {destinationCities.map((city) => (
+          {cities.map((city) => (
             <Item
               key={city.id}
               onClick={() =>
