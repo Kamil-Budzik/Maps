@@ -2,6 +2,7 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import {
+  setAppStage,
   setDestinationCities,
   setDestinationCity,
   setDestinationCityLoc,
@@ -23,6 +24,7 @@ const DropdownCombobox = () => {
     dispatch(setDestinationCityLoc(loc));
     dispatch(setDestinationCity(title));
     dispatch(setDestinationCities([]));
+    dispatch(setAppStage('completed'));
   };
 
   return (

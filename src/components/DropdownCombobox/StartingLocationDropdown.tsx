@@ -2,6 +2,7 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import {
+  setAppStage,
   setStartingCities,
   setStartingCity,
   setStartingCityLoc,
@@ -23,6 +24,7 @@ const StartingLocationDropdown = () => {
     dispatch(setStartingCityLoc(loc));
     dispatch(setStartingCity(title));
     dispatch(setStartingCities([]));
+    dispatch(setAppStage('destination'));
   };
 
   return (

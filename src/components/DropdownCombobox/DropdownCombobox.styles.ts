@@ -7,6 +7,7 @@ export const List = styled.ul`
   border-bottom-right-radius: 43px;
   max-height: 200px;
   overflow-y: auto;
+  position: relative;
 `;
 
 export const Item = styled.li`
