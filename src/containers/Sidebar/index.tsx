@@ -1,39 +1,51 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 
 import Title from 'components/Title';
-import Input from 'components/Input';
 import Button from 'components/Button';
+import FuelForms from 'containers/FuelForms';
 
-import { Label, List, Subtitle, Wrapper } from './Sidebar.styles';
+import { List, Subtitle, Wrapper } from './Sidebar.styles';
+
+import { RootState } from 'store';
 
 const Sidebar = () => {
+  const { distance, fuelPrice, fuelUsage } = useSelector(
+    (state: RootState) => state.summary
+  );
+
+  const km = distance / 1000;
+  const price = fuelUsage * fuelPrice * (km / 100) * 1.1;
+  const days = Number((km / 800).toFixed());
+
   return (
     <Wrapper>
       <div className="container">
         <Title />
         <section>
           <Subtitle>Koszty</Subtitle>
-          <div>
-            <div className="inputWrapper">
-              <Label htmlFor="fuelUsage">Spalanie paliwa na 100km</Label>
-              <Input id="fuelUsage" type="number" />
-            </div>
-            <div className="inputWrapper">
-              <Label htmlFor="fuelPrice">Cena za 1 litr paliwa</Label>
-              <Input id="fuelPrice" type="number" />
-            </div>
-          </div>
+          <FuelForms />
         </section>
         <section>
           <Subtitle>Dane przejazdu</Subtitle>
           <List>
-            <li>Ilość km: 2250</li>
-            <li>Ilość potrzebnych dni: 3</li>
-            <li>Koszt paliwa: 450zł</li>
-            <li>Całkowity koszt: 3450zł</li>
+            {price ? (
+              <>
+                <li>Ilość km: {km.toFixed(1)}</li>
+                <li>Ilość potrzebnych dni: {days + 1}</li>
+                <li>Koszt paliwa: {price.toFixed(1)}zł</li>
+                <li>Całkowity koszt: {(price + days * 1000).toFixed(1)}zł</li>
+              </>
+            ) : (
+              'Wpisz danę w lubryczki koszty'
+            )}
           </List>
         </section>
-        <Button isPdf>Dowload PDF</Button>
+        <Button isPdf>
+          <a href="" download>
+            Dowload PDF
+          </a>
+        </Button>
       </div>
     </Wrapper>
   );

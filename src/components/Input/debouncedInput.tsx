@@ -87,7 +87,7 @@ const DebouncedInput = ({ placeholder, len, type }: Props) => {
         }
       })();
     }
-  }, [query, dispatch, type, destinationCity, startingCity]);
+  }, [query, dispatch, type]);
 
   return (
     <Input
