@@ -26,7 +26,7 @@ const TripSummary = () => {
             <li>Całkowity koszt: {(price + days * 1000).toFixed(1)}zł</li>
           </>
         ) : (
-          'Wypełnij powyższe dane'
+          <li>Wypełnij powyższe dane</li>
         )}
       </List>
     </section>
