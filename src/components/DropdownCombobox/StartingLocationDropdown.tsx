@@ -8,8 +8,7 @@ import {
 import { RootState } from 'store';
 
 import DebouncedInput from 'components/Input/debouncedInput';
-
-import { Item, List } from './DropdownCombobox.styles';
+import CitiesList from 'components/CitiesList';
 
 const StartingLocationDropdown = () => {
   const { startingCity } = useSelector((state: RootState) => state.location);
@@ -29,27 +28,7 @@ const StartingLocationDropdown = () => {
         type="starting-location"
       />
       {cities.length > 0 && (
-        <List>
-          {cities.map((city) => (
-            <Item
-              tabIndex={0}
-              key={city.id}
-              onClick={() =>
-                handleEvent([city.position.lat, city.position.lng], city.title)
-              }
-              onKeyDown={(event: React.KeyboardEvent) => {
-                if (event.key === 'Enter') {
-                  handleEvent(
-                    [city.position.lat, city.position.lng],
-                    city.title
-                  );
-                }
-              }}
-            >
-              {city.title}
-            </Item>
-          ))}
-        </List>
+        <CitiesList cities={cities} handleEvent={handleEvent} />
       )}
     </div>
   );
