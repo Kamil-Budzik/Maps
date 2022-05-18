@@ -1,9 +1,14 @@
 import styled from 'styled-components';
 
-const Button = styled.button`
+interface Props {
+  isPdf?: boolean;
+}
+
+const Button = styled.button<Props>`
   border: none;
   border-radius: 43px;
-  background: ${({ theme }) => theme.colors.primary};
+  background: ${({ theme, isPdf }) =>
+    isPdf ? theme.colors.red : theme.colors.primary};
   color: white;
   font-size: 2rem;
   padding: 0.5em 1em;
@@ -11,7 +16,8 @@ const Button = styled.button`
   cursor: pointer;
 
   &:hover {
-    background: ${({ theme }) => theme.colors.primaryHover};
+    background: ${({ theme, isPdf }) =>
+      isPdf ? theme.colors.redHover : theme.colors.primaryHover};
   }
 `;
 
