@@ -8,14 +8,14 @@ import { RootState } from 'store';
 import { StyledMapContainer, Wrapper } from './MapDisplay.styles';
 
 const MapDisplay = () => {
-  const { startingCityLoc, destinationCityLoc } = useSelector(
+  const { startingCity, destinationCity } = useSelector(
     (state: RootState) => state.location
   );
 
   return (
     <Wrapper>
       <StyledMapContainer
-        center={[startingCityLoc[0], startingCityLoc[1]]}
+        // center={[startingCityLoc[0], startingCityLoc[1]]}
         zoom={13}
         scrollWheelZoom={true}
         style={{ width: '100%', height: '100%' }}
@@ -25,8 +25,8 @@ const MapDisplay = () => {
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
         <RoutingMachine
-          startingLoc={startingCityLoc}
-          destinationLoc={destinationCityLoc}
+          startingLoc={startingCity.loc}
+          destinationLoc={destinationCity.loc}
         />
       </StyledMapContainer>
     </Wrapper>

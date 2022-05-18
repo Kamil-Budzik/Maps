@@ -2,29 +2,21 @@ import { createSlice } from '@reduxjs/toolkit';
 
 import { City } from './CityInterface';
 
+interface CityState {
+  title: string;
+  loc: [number, number];
+  cities: City[];
+}
+
 export interface LocationState {
-  //starting city
-  startingCities: City[];
-  startingCityLoc: [number, number];
-  startingCity: string;
-  //destination
-  destinationCities: City[];
-  destinationCity: string;
-  destinationCityLoc: [number, number];
-  //app-stage
+  startingCity: CityState;
+  destinationCity: CityState;
   stage: 'start' | 'destination' | 'completed';
 }
 
 const initialState: LocationState = {
-  //starting city
-  startingCities: [],
-  startingCity: '',
-  startingCityLoc: [0, 0],
-  //destination
-  destinationCities: [],
-  destinationCity: '',
-  destinationCityLoc: [0, 0],
-  //app-stage
+  startingCity: { title: '', loc: [0, 0], cities: [] },
+  destinationCity: { title: '', loc: [0, 0], cities: [] },
   stage: 'start',
 };
 
@@ -32,41 +24,23 @@ export const locationSlice = createSlice({
   name: 'location',
   initialState,
   reducers: {
-    //starting city
-    setStartingCities: (state, action) => {
-      state.startingCities = action.payload;
+    handleStartingCity: (state, action) => {
+      state.startingCity.title = action.payload.title;
+      state.startingCity.loc = action.payload.loc;
+      state.startingCity.cities = action.payload.cities;
     },
-    setStartingCity: (state, action) => {
-      state.startingCity = action.payload;
+    handleDestinationCity: (state, action) => {
+      state.destinationCity.title = action.payload.title;
+      state.destinationCity.loc = action.payload.loc;
+      state.destinationCity.cities = action.payload.cities;
     },
-    setStartingCityLoc: (state, action) => {
-      state.startingCityLoc = action.payload;
-    },
-    //destination
-    setDestinationCities: (state, action) => {
-      state.destinationCities = action.payload;
-    },
-    setDestinationCity: (state, action) => {
-      state.destinationCity = action.payload;
-    },
-    setDestinationCityLoc: (state, action) => {
-      state.destinationCityLoc = action.payload;
-    },
-    //app=stage
     setAppStage: (state, action) => {
       state.stage = action.payload;
     },
   },
 });
 
-export const {
-  setStartingCities,
-  setStartingCity,
-  setStartingCityLoc,
-  setDestinationCity,
-  setDestinationCities,
-  setDestinationCityLoc,
-  setAppStage,
-} = locationSlice.actions;
+export const { handleDestinationCity, handleStartingCity, setAppStage } =
+  locationSlice.actions;
 
 export default locationSlice.reducer;

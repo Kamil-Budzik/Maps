@@ -4,10 +4,8 @@ import debounce from 'lodash.debounce';
 import { useDispatch, useSelector } from 'react-redux';
 
 import {
-  setDestinationCities,
-  setDestinationCity,
-  setStartingCities,
-  setStartingCity,
+  handleDestinationCity,
+  handleStartingCity,
 } from 'features/location/locationSlice';
 import { RootState } from 'store';
 
@@ -32,10 +30,14 @@ const DebouncedInput = ({ placeholder, len, type }: Props) => {
     setQuery(event.target.value);
 
     if (type === 'starting-location') {
-      dispatch(setStartingCity(event.target.value));
+      dispatch(
+        handleStartingCity({ ...startingCity, title: event.target.value })
+      );
     }
     if (type === 'destination') {
-      dispatch(setDestinationCity(event.target.value));
+      dispatch(
+        handleDestinationCity({ ...destinationCity, title: event.target.value })
+      );
     }
   };
 
@@ -48,10 +50,10 @@ const DebouncedInput = ({ placeholder, len, type }: Props) => {
   useEffect(() => {
     if (inputRef.current) {
       if (type === 'starting-location') {
-        inputRef.current.value = startingCity;
+        inputRef.current.value = startingCity.title;
       }
       if (type === 'destination') {
-        inputRef.current.value = destinationCity;
+        inputRef.current.value = destinationCity.title;
       }
     }
   }, [startingCity, destinationCity, type]);
@@ -65,15 +67,27 @@ const DebouncedInput = ({ placeholder, len, type }: Props) => {
 
         if (inputRef.current) {
           if (type === 'starting-location') {
-            dispatch(setStartingCities(data.items));
+            dispatch(
+              handleStartingCity({
+                ...startingCity,
+                title: inputRef.current.value,
+                cities: data.items,
+              })
+            );
           }
           if (type === 'destination') {
-            dispatch(setDestinationCities(data.items));
+            dispatch(
+              handleDestinationCity({
+                ...destinationCity,
+                title: inputRef.current.value,
+                cities: data.items,
+              })
+            );
           }
         }
       })();
     }
-  }, [query, dispatch, type]);
+  }, [query, dispatch, type, destinationCity, startingCity]);
 
   return (
     <Input
