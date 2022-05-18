@@ -1,9 +1,11 @@
 import L from 'leaflet';
 import { useEffect } from 'react';
 import { useMap } from 'react-leaflet';
+import { useDispatch } from 'react-redux';
 
 import 'leaflet-routing-machine';
 import 'lrm-graphhopper';
+import { setDistance } from '../../features/summary/summarySlice';
 
 interface Props {
   startingLoc: [number, number];
@@ -12,8 +14,10 @@ interface Props {
 
 export default function Routing({ startingLoc, destinationLoc }: Props) {
   const map = useMap();
-  // @ts-ignore
+  const dispatch = useDispatch();
+
   useEffect(() => {
+    // There is a problem with graphhopper types declaration. The quickest way of solving it, is to use ts-ignore
     const routingControl = L.Routing.control({
       // @ts-ignore
       router: new L.Routing.graphHopper(process.env.REACT_APP_GRAPHHOPPERTOKEN),
@@ -23,8 +27,14 @@ export default function Routing({ startingLoc, destinationLoc }: Props) {
       ],
       routeWhileDragging: false,
     }).addTo(map);
-    console.log(routingControl.getPlan());
-    return () => map.removeControl(routingControl);
+    routingControl.on('routesfound', (e) => {
+      const routes = e.routes;
+      // console.log(routes[0].summary);
+      dispatch(setDistance(routes[0].summary.totalDistance));
+    });
+    return () => {
+      map.removeControl(routingControl);
+    };
   }, [map, destinationLoc, startingLoc]);
 
   return null;

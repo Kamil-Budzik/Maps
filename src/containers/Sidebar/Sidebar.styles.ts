@@ -23,12 +23,6 @@ export const Wrapper = styled.div`
   }
 `;
 
-export const Label = styled.label`
-  display: block;
-  font-weight: 500;
-  margin-bottom: 1em;
-`;
-
 export const Subtitle = styled.h2`
   font-weight: 600;
   font-size: 2rem;
