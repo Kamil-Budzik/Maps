@@ -16,8 +16,7 @@ const StartingLocationDropdown = () => {
   const cities = startingCity.cities;
   const dispatch = useDispatch();
 
-  // set Starting city id, value and clear list
-  const handleClick = (loc: [number, number], title: string) => {
+  const handleEvent = (loc: [number, number], title: string) => {
     dispatch(handleStartingCity({ loc, title, cities: [] }));
     dispatch(setAppStage('destination'));
   };
@@ -33,10 +32,19 @@ const StartingLocationDropdown = () => {
         <List>
           {cities.map((city) => (
             <Item
+              tabIndex={0}
               key={city.id}
               onClick={() =>
-                handleClick([city.position.lat, city.position.lng], city.title)
+                handleEvent([city.position.lat, city.position.lng], city.title)
               }
+              onKeyDown={(event: React.KeyboardEvent) => {
+                if (event.key === 'Enter') {
+                  handleEvent(
+                    [city.position.lat, city.position.lng],
+                    city.title
+                  );
+                }
+              }}
             >
               {city.title}
             </Item>
