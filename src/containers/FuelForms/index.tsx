@@ -22,21 +22,25 @@ const Index = () => {
       <div className="inputWrapper">
         <Label htmlFor="fuelUsage">Spalanie paliwa na 100km</Label>
         <Input
+          aria-label="fuelUsage"
           value={fuelUsage ? fuelUsage : ''}
           onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
             setFuelUsage(Number(e.target.value))
           }
           id="fuelUsage"
           type="number"
+          name="fuelUsage"
         />
       </div>
       <div className="inputWrapper">
         <Label htmlFor="fuelPrice">Cena za 1 litr paliwa</Label>
         <Input
+          aria-label="fuelPrice"
           value={fuelPrice ? fuelPrice : ''}
           onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
             setFuelPrice(Number(e.target.value))
           }
+          name="fuelPrice"
           id="fuelPrice"
           type="number"
         />
