@@ -18,7 +18,7 @@ const DropdownCombobox = () => {
   const cities = destinationCity.cities;
 
   // set Destination city id, value and clear list
-  const handleClick = (loc: [number, number], title: string) => {
+  const handleEvent = (loc: [number, number], title: string) => {
     dispatch(setAppStage('completed'));
     dispatch(handleDestinationCity({ title, loc, cities: [] }));
   };
@@ -34,10 +34,19 @@ const DropdownCombobox = () => {
         <List>
           {cities.map((city) => (
             <Item
+              tabIndex={0}
               key={city.id}
               onClick={() =>
-                handleClick([city.position.lat, city.position.lng], city.title)
+                handleEvent([city.position.lat, city.position.lng], city.title)
               }
+              onKeyDown={(event: React.KeyboardEvent) => {
+                if (event.key === 'Enter') {
+                  handleEvent(
+                    [city.position.lat, city.position.lng],
+                    city.title
+                  );
+                }
+              }}
             >
               {city.title}
             </Item>
