@@ -21,5 +21,5 @@ export const Wrapper = styled.section`
 
 export const StyledMapContainer = styled(MapContainer)`
   width: 100%;
-  height: 100vh;
+  height: 100%;
 `;

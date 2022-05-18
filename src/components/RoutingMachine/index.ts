@@ -35,7 +35,7 @@ export default function Routing({ startingLoc, destinationLoc }: Props) {
     return () => {
       map.removeControl(routingControl);
     };
-  }, [map, destinationLoc, startingLoc]);
+  }, [map, destinationLoc, startingLoc, dispatch]);
 
   return null;
 }
