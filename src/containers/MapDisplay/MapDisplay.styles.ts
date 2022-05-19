@@ -23,3 +23,10 @@ export const StyledMapContainer = styled(MapContainer)`
   width: 100%;
   height: 100%;
 `;
+
+export const ButtonContainer = styled.section`
+  display: grid;
+  place-items: center;
+  height: 100vh;
+  width: 100%;
+`;
