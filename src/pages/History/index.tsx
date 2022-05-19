@@ -3,8 +3,9 @@ import { Link } from 'react-router-dom';
 
 import Title from 'components/Title';
 import Button from 'components/Button';
+import HistoryList from 'components/HistoryList';
 
-import { ContentWrapper, Item, List, Wrapper } from './History.styles';
+import { ContentWrapper, Wrapper } from './History.styles';
 
 const History = () => {
   return (
@@ -13,16 +14,7 @@ const History = () => {
         <Title />
         <section>
           <h2>Historia tras</h2>
-          <List>
-            <Item>
-              <div>Paris, France {'->'} Brzeg, Opolskie</div>
-              <div>500km</div>
-            </Item>
-            <Item>
-              <div>Paris, France {'->'} Brzeg, Opolskie</div>
-              <div>500km</div>
-            </Item>
-          </List>
+          <HistoryList />
           <Link to="/">
             <Button>Powrót</Button>
           </Link>

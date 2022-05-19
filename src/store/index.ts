@@ -2,11 +2,13 @@ import { configureStore } from '@reduxjs/toolkit';
 
 import locationReducer from 'features/location/locationSlice';
 import summaryReducer from 'features/summary/summarySlice';
+import historyReducer from 'features/history/historySlice';
 
 export const store = configureStore({
   reducer: {
     location: locationReducer,
     summary: summaryReducer,
+    history: historyReducer,
   },
 });
 
