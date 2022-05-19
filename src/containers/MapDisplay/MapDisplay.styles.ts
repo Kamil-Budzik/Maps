@@ -30,3 +30,12 @@ export const ButtonContainer = styled.section`
   height: 100vh;
   width: 100%;
 `;
+
+export const ErrorContainer = styled.section`
+  display: grid;
+  place-items: center;
+  height: 100vh;
+  max-width: 800px;
+  color: #ff3333;
+  padding: 0 2em;
+`;

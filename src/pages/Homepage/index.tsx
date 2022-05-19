@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 import Title from 'components/Title';
@@ -7,11 +7,17 @@ import DestinationDropdown from 'components/DropdownCombobox/DestinationDropdown
 import Button from 'components/Button';
 
 import { ContentWrapper, FormWrapper, Wrapper } from './Homepage.styles';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from 'store';
+import { clearError } from '../../features/error/errorSlice';
 
 const Homepage = () => {
   const { stage } = useSelector((state: RootState) => state.location);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(clearError());
+  }, [dispatch]);
 
   return (
     <Wrapper>
