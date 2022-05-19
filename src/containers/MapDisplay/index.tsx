@@ -1,16 +1,33 @@
 import React from 'react';
 import { TileLayer } from 'react-leaflet';
 import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 import RoutingMachine from 'components/RoutingMachine';
+import Button from 'components/Button';
+
 import { RootState } from 'store';
 
-import { StyledMapContainer, Wrapper } from './MapDisplay.styles';
+import {
+  ButtonContainer,
+  StyledMapContainer,
+  Wrapper,
+} from './MapDisplay.styles';
 
 const MapDisplay = () => {
   const { startingCity, destinationCity } = useSelector(
     (state: RootState) => state.location
   );
+
+  if (!startingCity.title && !destinationCity.title) {
+    return (
+      <ButtonContainer>
+        <Link to="/">
+          <Button isPdf>Wybierz lokalizację</Button>
+        </Link>
+      </ButtonContainer>
+    );
+  }
 
   return (
     <Wrapper>
