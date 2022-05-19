@@ -14,18 +14,25 @@ const Homepage = () => {
   const { stage } = useSelector((state: RootState) => state.location);
   return (
     <Wrapper>
-      <ContentWrapper>
-        <Title />
-        <FormWrapper stage={stage}>
-          <StartingLocationDropdown />
-          {stage !== 'start' && <DestinationDropdown />}
-          {stage === 'completed' && (
-            <Link to="/map">
-              <Button>Wyznacz drogę</Button>
-            </Link>
-          )}
-        </FormWrapper>
-      </ContentWrapper>
+      <div className="container">
+        <ContentWrapper>
+          <Title />
+          <FormWrapper stage={stage}>
+            <StartingLocationDropdown />
+            {stage !== 'start' && <DestinationDropdown />}
+            {stage === 'completed' && (
+              <Link to="/map">
+                <Button>Wyznacz drogę</Button>
+              </Link>
+            )}
+          </FormWrapper>
+        </ContentWrapper>
+        <Link to="/history">
+          <Button isPdf className="history-button">
+            Historia tras
+          </Button>
+        </Link>
+      </div>
     </Wrapper>
   );
 };

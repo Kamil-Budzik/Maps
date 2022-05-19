@@ -6,6 +6,14 @@ export const Wrapper = styled.div`
   min-height: 100vh;
   display: grid;
   place-items: center;
+
+  .container {
+    text-align: center;
+  }
+
+  .history-button {
+    margin-top: 2em;
+  }
 `;
 
 export const ContentWrapper = styled.main`

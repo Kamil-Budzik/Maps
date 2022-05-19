@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Wrapper = styled.div`
+export const Wrapper = styled.main`
   background: white;
   padding: 0 2em 3em;
   min-height: 100vh;
@@ -18,8 +18,31 @@ export const Wrapper = styled.div`
     margin-bottom: 2em;
   }
 
+  .return-btn {
+    align-self: center;
+  }
+
   @media (min-width: 800px) {
     width: 400px;
+  }
+`;
+
+export const Row = styled.div`
+  display: flex;
+  align-items: center;
+
+  a {
+    text-decoration: none;
+  }
+`;
+export const Arrow = styled.span`
+  font-size: 4rem;
+  color: ${({ theme }) => theme.colors.primary};
+  transition: 0.3s ease-in-out;
+  cursor: pointer;
+
+  &:hover {
+    color: ${({ theme }) => theme.colors.primaryHover};
   }
 `;
 
