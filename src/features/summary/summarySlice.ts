@@ -23,9 +23,14 @@ export const summarySlice = createSlice({
       state.fuelPrice = action.payload.fuelPrice;
       state.fuelUsage = action.payload.fuelUsage;
     },
+    clearSummaryState: (state) => {
+      state.fuelPrice = 0;
+      state.fuelUsage = 0;
+      state.distance = 0;
+    },
   },
 });
 
-export const { setDistance, setFuel } = summarySlice.actions;
+export const { setDistance, setFuel, clearSummaryState } = summarySlice.actions;
 
 export default summarySlice.reducer;

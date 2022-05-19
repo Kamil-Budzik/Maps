@@ -37,10 +37,19 @@ export const locationSlice = createSlice({
     setAppStage: (state, action) => {
       state.stage = action.payload;
     },
+    clearState: (state) => {
+      state.stage = 'start';
+      state.startingCity = { title: '', loc: [0, 0], cities: [] };
+      state.destinationCity = { title: '', loc: [0, 0], cities: [] };
+    },
   },
 });
 
-export const { handleDestinationCity, handleStartingCity, setAppStage } =
-  locationSlice.actions;
+export const {
+  handleDestinationCity,
+  handleStartingCity,
+  setAppStage,
+  clearState,
+} = locationSlice.actions;
 
 export default locationSlice.reducer;

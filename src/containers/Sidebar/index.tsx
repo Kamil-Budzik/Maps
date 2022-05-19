@@ -1,5 +1,6 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 import Title from 'components/Title';
 import Button from 'components/Button';
@@ -7,8 +8,10 @@ import FuelForms from 'containers/FuelForms';
 import TripSummary from 'components/TripSummary';
 
 import { RootState } from 'store';
+import { clearState } from 'features/location/locationSlice';
+import { clearSummaryState } from 'features/summary/summarySlice';
 
-import { Subtitle, Wrapper } from './Sidebar.styles';
+import { Arrow, Row, Subtitle, Wrapper } from './Sidebar.styles';
 
 interface Props {
   handlePrint: () => void;
@@ -19,10 +22,22 @@ const Sidebar = ({ handlePrint }: Props) => {
     (state: RootState) => state.summary
   );
 
+  const dispatch = useDispatch();
+
+  const handleClick = () => {
+    dispatch(clearState());
+    dispatch(clearSummaryState());
+  };
+
   return (
     <Wrapper>
-      <div className="container">
-        <Title />
+      <section className="container">
+        <Row>
+          <Link to="/" onClick={handleClick}>
+            <Arrow>{'<-'}</Arrow>
+          </Link>
+          <Title />
+        </Row>
         <section>
           <Subtitle>Koszty</Subtitle>
           <FuelForms />
@@ -33,7 +48,7 @@ const Sidebar = ({ handlePrint }: Props) => {
             Dowload PDF
           </Button>
         ) : null}
-      </div>
+      </section>
     </Wrapper>
   );
 };
