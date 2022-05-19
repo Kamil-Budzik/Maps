@@ -21,6 +21,7 @@ const Sidebar = ({ handlePrint }: Props) => {
   const { fuelPrice, fuelUsage } = useSelector(
     (state: RootState) => state.summary
   );
+  const { isError } = useSelector((state: RootState) => state.error);
 
   const dispatch = useDispatch();
 
@@ -43,7 +44,7 @@ const Sidebar = ({ handlePrint }: Props) => {
           <FuelForms />
         </section>
         <TripSummary />
-        {fuelUsage && fuelPrice ? (
+        {fuelUsage && fuelPrice && !isError ? (
           <Button isPdf onClick={handlePrint}>
             Dowload PDF
           </Button>

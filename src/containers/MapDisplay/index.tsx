@@ -10,6 +10,7 @@ import { RootState } from 'store';
 
 import {
   ButtonContainer,
+  ErrorContainer,
   StyledMapContainer,
   Wrapper,
 } from './MapDisplay.styles';
@@ -19,6 +20,8 @@ const MapDisplay = () => {
     (state: RootState) => state.location
   );
 
+  const { isError, error } = useSelector((state: RootState) => state.error);
+
   if (!startingCity.title && !destinationCity.title) {
     return (
       <ButtonContainer>
@@ -26,6 +29,14 @@ const MapDisplay = () => {
           <Button isPdf>Wybierz lokalizację</Button>
         </Link>
       </ButtonContainer>
+    );
+  }
+
+  if (isError) {
+    return (
+      <ErrorContainer>
+        <h2>{error}</h2>
+      </ErrorContainer>
     );
   }
 

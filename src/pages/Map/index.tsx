@@ -15,7 +15,10 @@ import { Wrapper } from './Map.styles';
 
 const Map = () => {
   const componentToPrint = useRef(null);
-  const state = useSelector((state: RootState) => state);
+  const { startingCity, destinationCity } = useSelector(
+    (state: RootState) => state.location
+  );
+  const { distance } = useSelector((state: RootState) => state.summary);
   const dispatch = useDispatch();
 
   const handlePrint = useReactToPrint({
@@ -23,16 +26,16 @@ const Map = () => {
   });
 
   useEffect(() => {
-    if (state.summary.distance > 0) {
+    if (distance > 0) {
       dispatch(
         addNewItem({
-          distance: (state.summary.distance / 1000).toFixed(1),
-          startingLocation: state.location.startingCity.title,
-          destination: state.location.destinationCity.title,
+          distance: (distance / 1000).toFixed(1),
+          startingLocation: startingCity.title,
+          destination: destinationCity.title,
         })
       );
     }
-  }, [dispatch, state.location, state.summary.distance]);
+  }, [dispatch, distance, startingCity.title, destinationCity.title]);
 
   return (
     <Wrapper ref={componentToPrint}>
@@ -41,5 +44,6 @@ const Map = () => {
     </Wrapper>
   );
 };
+
 
 export default Map;
