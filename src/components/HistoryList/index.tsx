@@ -1,8 +1,9 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
+
+import { RootState } from 'store';
 
 import { Item, List } from './History.styles';
-import { useSelector } from 'react-redux';
-import { RootState } from '../../store';
 
 const HistoryList = () => {
   const { items } = useSelector((state: RootState) => state.history);
@@ -11,7 +12,7 @@ const HistoryList = () => {
     <List>
       {items.length ? (
         items.map((item) => (
-          <Item>
+          <Item key={item.startingLocation + item.destination}>
             <div>
               {item.startingLocation} {'->'} {item.destination}
             </div>
