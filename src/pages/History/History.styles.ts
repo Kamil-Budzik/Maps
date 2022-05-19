@@ -15,6 +15,7 @@ export const ContentWrapper = styled.main`
   max-width: 750px;
   height: 600px;
   text-align: center;
+  overflow-y: auto;
 
   h2 {
     font-size: 2rem;
