@@ -12,6 +12,7 @@ import { RootState } from 'store';
 
 const Homepage = () => {
   const { stage } = useSelector((state: RootState) => state.location);
+
   return (
     <Wrapper>
       <div className="container">
