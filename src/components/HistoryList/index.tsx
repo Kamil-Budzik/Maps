@@ -11,8 +11,8 @@ const HistoryList = () => {
   return (
     <List>
       {items.length ? (
-        items.map((item) => (
-          <Item key={item.startingLocation + item.destination}>
+        items.map((item, index) => (
+          <Item key={index}>
             <div>
               {item.startingLocation} {'->'} {item.destination}
             </div>
