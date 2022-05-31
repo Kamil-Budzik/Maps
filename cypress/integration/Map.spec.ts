@@ -4,42 +4,42 @@ describe('Map', () => {
   it('renders error message when routes are not found', () => {
     cy.visit('/');
 
-    cy.get('input[placeholder="Początkowa lokalizacja"]')
+    cy.get('input[placeholder="Starting location"]')
       .click()
       .type('Brzeg')
       .get('li')
       .click();
 
-    cy.get('input[placeholder="Cel podróży"]')
+    cy.get('input[placeholder="Destination"]')
       .click()
       .type('sdf')
       .get('li')
       .click();
-    cy.contains('Wyznacz drogę').click();
+    cy.contains('Generate the way').click();
 
     cy.contains('maps.app.help@gmail.com');
-    cy.contains('Wypełnij powyższe dane');
+    cy.contains('Fill in the above data');
   });
 
   it('renders button and redirects user when data from input are not provided', () => {
     cy.visit('/map');
 
-    cy.contains('Wybierz lokalizację').click();
-    cy.get('input[placeholder="Początkowa lokalizacja"]');
+    cy.contains('Select location').click();
+    cy.get('input[placeholder="Starting location"]');
   });
 
   it('hides summary until user fills in the data about car', () => {
     cy.visit('/');
     fillInputs();
-    cy.contains('Wyznacz drogę').click();
+    cy.contains('Generate the way').click();
 
-    cy.contains('Wypełnij powyższe dane');
+    cy.contains('Fill in the above data');
 
-    cy.contains('label', 'Spalanie paliwa na 100km').click().type('7');
-    cy.contains('label', 'Cena za 1 litr paliwa').click().type('6');
+    cy.contains('label', 'Fuel usage for 100km').click().type('7');
+    cy.contains('label', 'Fuel price (for 1 liter)').click().type('6');
 
-    cy.contains('Ilość km: ');
-    cy.contains('Dowload PDF');
+    cy.contains('Number of km: ');
+    cy.contains('Download PDF');
   });
 });
 

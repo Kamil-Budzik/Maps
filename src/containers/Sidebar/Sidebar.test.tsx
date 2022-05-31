@@ -12,27 +12,14 @@ describe('Sidebar', () => {
   it('hides pdf button as long as inputs are empty', () => {
     render(<Sidebar handlePrint={() => null} />);
 
-    screen.getByText(/Wypełnij powyższe dane/i);
-    expect(screen.queryByText(/dowload pdf/i)).not.toBeInTheDocument();
+    screen.getByText(/Fill in the above data/i);
+    expect(screen.queryByText(/download pdf/i)).not.toBeInTheDocument();
 
     userEvent.type(screen.getByLabelText('fuelUsage'), '6.6');
     userEvent.type(screen.getByLabelText('fuelPrice'), '7.2');
 
-    screen.getByText(/dowload pdf/i);
+    screen.getByText(/download pdf/i);
   });
-  // it('hides trip summary as long as inputs are empty', async () => {
-  //   render(<Sidebar handlePrint={() => null} />);
-  //
-  //   screen.getByText(/Wypełnij powyższe dane/i);
-  //   expect(screen.queryByText(/Ilość km/i)).not.toBeInTheDocument();
-  //   expect(screen.queryByText(/Całkowity koszt/i)).not.toBeInTheDocument();
-  //
-  //   userEvent.type(screen.getByLabelText('fuelUsage'), '6.6');
-  //   userEvent.type(screen.getByLabelText('fuelPrice'), '7.2');
-  //
-  //   await screen.findByText(/Ilość km/i);
-  //   await screen.findByText(/Całkowity koszt/i);
-  // });
-}); 
+});
 
  

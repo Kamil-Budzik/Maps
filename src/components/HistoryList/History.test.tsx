@@ -7,7 +7,7 @@ describe('HistoryList', () => {
   it('renders message when there are no saved trips', () => {
     render(<HistoryList />);
 
-    screen.getByText(/Twoja historia jest pusta/i);
+    screen.getByText(/Your history is empty/i);
   });
 });
 
