@@ -30,14 +30,14 @@ const Homepage = () => {
             {stage !== 'start' && <DestinationDropdown />}
             {stage === 'completed' && (
               <Link to="/map">
-                <Button>Wyznacz drogę</Button>
+                <Button>Generate the way</Button>
               </Link>
             )}
           </FormWrapper>
         </ContentWrapper>
         <Link to="/history">
           <Button isPdf className="history-button">
-            Historia tras
+            Trips history
           </Button>
         </Link>
       </div>
