@@ -25,7 +25,7 @@ const DropdownCombobox = () => {
   return (
     <div>
       <DebouncedInput
-        placeholder="Cel podróży"
+        placeholder="Destination"
         len={cities.length}
         type={'destination'}
       />

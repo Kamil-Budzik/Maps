@@ -23,7 +23,7 @@ const StartingLocationDropdown = () => {
   return (
     <div>
       <DebouncedInput
-        placeholder="Początkowa lokalizacja"
+        placeholder="Starting location"
         len={cities.length}
         type="starting-location"
       />
