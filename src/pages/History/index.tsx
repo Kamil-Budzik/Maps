@@ -13,10 +13,10 @@ const History = () => {
       <ContentWrapper>
         <Title />
         <section>
-          <h2>Historia tras</h2>
+          <h2>Trips history</h2>
           <HistoryList />
           <Link to="/">
-            <Button>Powrót</Button>
+            <Button>Select a route</Button>
           </Link>
         </section>
       </ContentWrapper>

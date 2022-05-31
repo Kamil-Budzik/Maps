@@ -20,7 +20,7 @@ const HistoryList = () => {
           </Item>
         ))
       ) : (
-        <li>Twoja historia jest pusta</li>
+        <li>Your history is empty</li>
       )}
     </List>
   );
