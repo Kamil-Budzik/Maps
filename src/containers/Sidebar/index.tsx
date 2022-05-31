@@ -40,13 +40,13 @@ const Sidebar = ({ handlePrint }: Props) => {
           <Title />
         </Row>
         <section>
-          <Subtitle>Koszty</Subtitle>
+          <Subtitle>Costs</Subtitle>
           <FuelForms />
         </section>
         <TripSummary />
         {fuelUsage && fuelPrice && !isError ? (
           <Button isPdf onClick={handlePrint}>
-            Dowload PDF
+            Download PDF
           </Button>
         ) : null}
       </section>

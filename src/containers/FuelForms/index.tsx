@@ -20,7 +20,7 @@ const Index = () => {
   return (
     <div>
       <div className="inputWrapper">
-        <Label htmlFor="fuelUsage">Spalanie paliwa na 100km</Label>
+        <Label htmlFor="fuelUsage">Fuel usage for 100km</Label>
         <Input
           aria-label="fuelUsage"
           value={fuelUsage ? fuelUsage : ''}
@@ -33,7 +33,7 @@ const Index = () => {
         />
       </div>
       <div className="inputWrapper">
-        <Label htmlFor="fuelPrice">Cena za 1 litr paliwa</Label>
+        <Label htmlFor="fuelPrice">Fuel price (for 1 liter)</Label>
         <Input
           aria-label="fuelPrice"
           value={fuelPrice ? fuelPrice : ''}

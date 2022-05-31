@@ -16,17 +16,17 @@ const TripSummary = () => {
 
   return (
     <section>
-      <Subtitle>Dane przejazdu</Subtitle>
+      <Subtitle>Trip Summary</Subtitle>
       <List>
         {price ? (
           <>
-            <li>Ilość km: {km.toFixed(1)}</li>
-            <li>Ilość potrzebnych dni: {days + 1}</li>
-            <li>Koszt paliwa: {price.toFixed(1)}zł</li>
-            <li>Całkowity koszt: {(price + days * 1000).toFixed(1)}zł</li>
+            <li>Number of km: {km.toFixed(1)}</li>
+            <li>Number of days needed: {days + 1}</li>
+            <li>Fuel price: {price.toFixed(1)}zł</li>
+            <li>Total cost: {(price + days * 1000).toFixed(1)}zł</li>
           </>
         ) : (
-          <li>Wypełnij powyższe dane</li>
+          <li>Fill in the above data</li>
         )}
       </List>
     </section>
