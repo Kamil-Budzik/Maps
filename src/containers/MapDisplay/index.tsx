@@ -26,7 +26,7 @@ const MapDisplay = () => {
     return (
       <ButtonContainer>
         <Link to="/">
-          <Button isPdf>Wybierz lokalizację</Button>
+          <Button isPdf>Select location</Button>
         </Link>
       </ButtonContainer>
     );
